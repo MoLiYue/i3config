@@ -139,7 +139,7 @@ bindsym $mod+a focus parent
 bindsym $mod+x [urgent=latest] focus
 
 # 层叠式的网络浏览器
-for_window [class="Uzbl-core"] focus child, layout stacking, focus
+# for_window [class="Uzbl-core"] focus child, layout stacking, focus
 
 # 标签式网络浏览器
 # for_window [class="Uzbl-core"] focus child, layout tabbed, focus
@@ -312,7 +312,8 @@ mode "$mode_launcher" {
 }
 
 #********************************************i3-gaps*********************************
-for_window [class="^.*"] border pixel 0
+# 边缘宽度大小
+for_window [class="^.*"] border pixel 1
 
 # 正确处理浮动对话框
 for_window [window_role = "pop-up"] floating enable
@@ -322,7 +323,8 @@ for_window [class = "(?i)mplayer"] floating enable
 for_window [title = "图片查看"] floating enable
 for_window [title = "(.*)Octopi(.*)"] floating enable
 
-border_radius 12
+# i3-gaps-rounded专用
+# border_radius 12
 
 # Activate smart borders (always)
 smart_borders on
