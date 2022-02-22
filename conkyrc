@@ -75,6 +75,18 @@ ${endif}
 		${endif}, 
 	"color" : "\#94F397"
 },
+
+{
+	"full_text" : "CPU ${cpu cpu0}%" ,
+	"color" : "\#8BC3E7",
+	"min_width" : "100%" 
+},
+
+{
+	"full_text" : "RAM ${mem}" ,
+	"color" : "\#B987D9"
+},
+
 # { "full_text" : "    ♪ ♩ ♫ ♬" , "color" : "\#7996a9" } ,
 
 # { "full_text" : "${if_mpd_playing}${mpd_smart 50} ${mpd_elapsed}/${mpd_length}${else}${mpd_status}${endif}"} ,
@@ -83,17 +95,16 @@ ${endif}
 
 {
 	"name": "kernel",
-	"full_text": " ${kernel} ",
-	"color": "\#C599BB",
-	"separator_block_width": 4
+	"full_text": "${kernel}",
+	"color": "\#C599BB"
 },
-# { "full_text": "${exec curl icanhazip.com}"},
+{ "full_text": "${exec curl icanhazip.com}"},
 
 # { "full_text" : "-mlyue","color": "\#BADA55"},
 
 ${if_match ${exec ~/.config/i3/scripts/getVolume.sh}>0} 
 	{
-		"full_text" : " VOC ${exec ~/.config/i3/scripts/getVolume.sh} ",
+		"full_text" : "VOC ${exec ~/.config/i3/scripts/getVolume.sh}",
 		"color" : "\#5087ed"
 	},
 ${else}
@@ -104,38 +115,27 @@ ${else}
 ${endif}
 
 {
-	"full_text" : " ACPI ${acpitemp}% " ,
+	"full_text" : "ACPI ${acpitemp}%" ,
 	"color" : "\#B987D9"
 },
 
 {
-	"full_text" : " CPU ${cpu cpu0}% " ,
-	"color" : "\#8BC3E7",
-	"min_width" : "100%" 
-},
-
-{
-	"full_text" : " RAM ${mem} " ,
-	"color" : "\#B987D9"
-},
-
-{
-	"full_text" : " / ${fs_used_perc /}% " ,
+	"full_text" : "/ ${fs_used_perc /}%" ,
 	"color" : "\#FF9D17"
 },
 
 {
-	"full_text" : " POW ${battery_percent}% " ,
+	"full_text" : "POW ${battery_percent}%" ,
 	"color" : "\#A4DC6A"
 },
 
 {
-	"full_text" : " ${time %Y/%m/%d %a} ",
+	"full_text" : "${time %Y.%m.%d %a}",
 	"color" : "\#ff797b"
 },
 
 {
-	"full_text" : " ${time %H:%M} " ,
+	"full_text" : "${time %H:%M}" ,
 	"color" : "\#8BADF9"
 }
 
