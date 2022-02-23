@@ -26,8 +26,8 @@ font pango:Monaco 9
 exec_always --no-startup-id fcitx5 -r
 exec_always --no-startup-id picom -c
 exec_always --no-startup-id flameshot
-exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/94506926_p0.jpg
-#exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/92795571_p0.jpg
+#exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/94506926_p0.jpg
+exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/92795571_p0.jpg
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id clight
 exec --no-startup-id landrop
@@ -85,7 +85,7 @@ assign [class="ieaseMusic"] $WS6
 assign [class="Cloud Music"] $WS6
 assign [class="Telegram"] $WS4
 assign [class="icalingua"] $WS4
-#assign [class="kitty ranger"] $WS3
+assign [class="dolphin"] $WS3
 assign [class="TeXstudio"] $WS8
 assign [class="Code"] $WS9
 assign [class="^netease-cloud-music$"] $WS6
