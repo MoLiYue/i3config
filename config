@@ -26,13 +26,16 @@ font pango:Monaco 9
 exec_always --no-startup-id fcitx5 -r
 exec_always --no-startup-id picom -c
 exec_always --no-startup-id flameshot
-#exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/94506926_p0.jpg
-exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/92795571_p0.jpg
+exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/94506926_p0.jpg
+#exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/92795571_p0.jpg
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id clight
 exec --no-startup-id landrop
 # exec_always --no-startup-id NetworkManager
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec_always --no-startup-id ~/i3/scripts/tap-to-click.sh
+exec_always --no-startup-id ~/i3/scripts/inverse-scroll.sh
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -89,6 +92,7 @@ assign [class="dolphin"] $WS3
 assign [class="TeXstudio"] $WS8
 assign [class="Code"] $WS9
 assign [class="^netease-cloud-music$"] $WS6
+assign [class="^Lutris$"] $WS10
 #assign [class="vim"] $WS4
 
 # change focus
