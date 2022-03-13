@@ -13,6 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
+
 font pango:Monaco 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -26,13 +27,16 @@ font pango:Monaco 9
 exec_always --no-startup-id fcitx5 -r
 exec_always --no-startup-id picom -c
 exec_always --no-startup-id flameshot
-exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/94506926_p0.jpg
+exec_always --no-startup-id xrandr --output DP-1 --mode 3440x1440 --refresh 100.00
+exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/世界的镇魂曲昼8000x2216壁纸.jpg
+#exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/94506926_p0.jpg
 #exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/92795571_p0.jpg
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id clight
 exec --no-startup-id landrop
 # exec_always --no-startup-id NetworkManager
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id copyq
 
 exec_always --no-startup-id ~/i3/scripts/tap-to-click.sh
 exec_always --no-startup-id ~/i3/scripts/inverse-scroll.sh
@@ -47,13 +51,16 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# 剪切板
+bindsym F3 exec --no-startup-id copyq toggle
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -66,6 +73,7 @@ bindsym $mod+Shift+q kill
 # A more modern dmenu replacement is rofi:
 bindsym $mod+d exec --no-startup-id rofi -show drun -run-shell-command '{terminal} -e zsh -ic "{cmd} && read"'
 bindsym $mod+Tab exec --no-startup-id rofi -show window
+#bindsym $mod+s exec --no-startup-id rofi -show ssh
 
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
@@ -93,7 +101,7 @@ assign [class="TeXstudio"] $WS8
 assign [class="Code"] $WS9
 assign [class="^netease-cloud-music$"] $WS6
 assign [class="^Lutris$"] $WS10
-#assign [class="vim"] $WS4
+assign [class="qutebrowser"] $WS2
 
 # change focus
 bindsym $mod+h focus left
@@ -180,6 +188,18 @@ set $ws7 "7:"
 set $ws8 "8:"
 set $ws9 "9:"
 set $ws10 "10:"
+
+# set workspace output                                                                                                                                         
+workspace $ws1 output DP-0 DP-1
+workspace $ws2 output DP-0 DP-1
+workspace $ws3 output DP-0 DP-1
+workspace $ws4 output DP-0 DP-1
+workspace $ws5 output DP-0 DP-1
+workspace $ws6 output DP-0 DP-1
+workspace $ws7 output DP-0 DP-1
+workspace $ws8 output DP-1 DP-0
+workspace $ws9 output DP-1 DP-0
+workspace $ws10 output DP-0 DP-1 
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -316,8 +336,7 @@ mode "$mode_launcher" {
     bindsym f exec firefox
     bindsym t exec thunderbird
     bindsym c exec google-chrome-stable
-    bindsym r exec ranger
-    
+    bindsym r exec kitty sh -c ranger
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -332,8 +351,11 @@ for_window [window_role = "pop-up"] floating enable
 for_window [window_role = "task_dialog"] floating enable
 for_window [title = "Preferences$"] floating enable
 for_window [class = "(?i)mplayer"] floating enable
-for_window [title = "图片查看"] floating enable
-for_window [title = "(.*)Octopi(.*)"] floating enable
+for_window [title = "图片查看"] floating enable,move position mouse 
+for_window [class = "(.*)octopi(.*)"] floating enable
+for_window [class = "(.*)copyq(.*)"] floating enable,move position mouse
+for_window [class = "(?i)flameshot"] floation enable
+for_window [class = "(?i)Steam"] floation enable
 
 # i3-gaps-rounded专用
 # border_radius 12
@@ -425,3 +447,13 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
+
+force_display_urgency_hint 500 ms   
+focus_wrapping no    
+popup_during_fullscreen smart  
+focus_on_window_activation  none # smart|urgent|focus|none                                                                                                     
+mouse_warping none # none|output 
+focus_follows_mouse yes #yes|no                                                                                                                                
+hide_edge_borders  smart #none|vertical|horizontal|both|smart  
+default_border none                                                                                                                                            
+default_floating_border normal  
