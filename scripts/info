@@ -1,24 +1,28 @@
 #!/bin/sh
 
-case "$1" in
+Noti() {
+	notify-send -a "$1" -u 'normal' "$2"
+}
+
+case $1 in
     temp)
-        notify-send -a "Temperatures" -u normal "$(temp_nc)"
+        Noti 'Temperatures' "$(temp_nc)"
         ;;
     disk)
         #i3-msg exit
-        notify-send -a "Disks mounted" -u normal "$(dfc -d | grep /dev/sda && dfc -d | grep /dev/sdb)"
+        Noti 'Disks mounted' "$(dfc -d | grep '/dev/sd[ab]')"
         ;;
     ip)
-        notify-send -a "External IP" -u normal "$(sh ~/.config/i3/scripts/ip-external)"
+        Noti 'External IP' "$(sh ~/.config/i3/scripts/ip-external)"
         ;;
     cal)
-        notify-send -a "Calendar" -u normal "$(cal)"
+        Noti 'Calendar' "$(cal)"
         ;;
     bat)
-        notify-send -a "Battery" -u normal "$(sh ~/.config/i3/scripts/battery)"
+        Noti 'Battery' "$(sh ~/.config/i3/scripts/battery)"
         ;;
     updates)
-        notify-send -a "Available updates" -u normal "$(yaourt -Qu)"
+        Noti 'Available updates' "$(yaourt -Qu)"
         ;;
     *)
         echo "Usage: $0 {temp|disk|ip|cal|bat|updates}"
