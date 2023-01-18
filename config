@@ -28,7 +28,7 @@ exec_always --no-startup-id fcitx5 -r
 exec_always --no-startup-id picom -c
 exec_always --no-startup-id flameshot
 #exec_always --no-startup-id xrandr --output DP-1 --mode 3440x1440 --refresh 100.00
-exec_always --no-startup-id feh --bg-fill ./background/1.jpg
+exec_always --no-startup-id feh --bg-fill /home/mlyue/.config/i3/background/1.jpg
 #exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/世界的镇魂曲昼8000x2216壁纸.jpg
 #exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/94506926_p0.jpg
 #exec_always --no-startup-id feh --bg-fill /home/mlyue/Pictures/92795571_p0.jpg
